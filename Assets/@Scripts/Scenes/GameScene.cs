@@ -7,16 +7,19 @@ public class GameScene : MonoBehaviour
     public GameObject snakePrefab;
     public GameObject slimePrefab;
     public GameObject goblinPrefab;
+    public GameObject joystickPrefab;
 
     GameObject snake;
     GameObject slime;
     GameObject goblin;
+    GameObject joystick;
 
     void Start()
     {
         snake = GameObject.Instantiate(snakePrefab);
         slime = GameObject.Instantiate(slimePrefab);
         goblin = GameObject.Instantiate(goblinPrefab);
+        joystick = GameObject.Instantiate(joystickPrefab);
 
         GameObject go = new GameObject() { name = "@Monsters" };
         snake.transform.parent = go.transform;
@@ -29,6 +32,7 @@ public class GameScene : MonoBehaviour
 
         slime.AddComponent<PlayerController>();
         Camera.main.GetComponent<CameraController>().target = slime;
+        joystick.name = "@UI_Joystick";
     }
 
     void Update()
