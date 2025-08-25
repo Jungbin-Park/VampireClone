@@ -16,39 +16,30 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+    }
 
+    private void OnDestroy()
+    {
+        if(Managers.Game != null)
+        {
+            Managers.Game.OnMoveDirChanged -= HandleOnMoveDirChanged;
+        }
+    }
+
+    void HandleOnMoveDirChanged(Vector2 dir)
+    {
+        MoveDir = dir;
     }
 
     void Update()
     {
-        //UpdateInput();
         MovePlayer();
-    }
-
-    // Device Simulator에서 먹통
-    void UpdateInput()
-    {
-        Vector2 dir = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.W))
-            dir.y += 1;
-        if (Input.GetKey(KeyCode.S))
-            dir.y -= 1;
-        if (Input.GetKey(KeyCode.A))
-            dir.x -= 1;
-        if (Input.GetKey(KeyCode.D))
-            dir.x += 1;
-
-        moveDir = dir.normalized;
-
-
     }
 
     void MovePlayer()
     {
-        // temp2
-        moveDir = Managers.moveDir;
-        
+        //moveDir = Managers.Game.MoveDir;
         Vector3 dir = moveDir * speed * Time.deltaTime;
         transform.position += dir;
     }

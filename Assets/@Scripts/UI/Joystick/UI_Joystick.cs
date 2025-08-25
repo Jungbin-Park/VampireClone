@@ -16,17 +16,14 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
     Vector2 touchPosition;
     Vector2 moveDir;
 
-    PlayerController player;
-
     void Start()
     {
         radius = background.gameObject.GetComponent<RectTransform>().sizeDelta.y / 2;
-        player = GameObject.Find("Slime_01").GetComponent<PlayerController>();
     }
 
     void Update()
     {
-
+        
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -36,7 +33,7 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // ���� Ŭ�� ��ǥ
+        // ���� Ŭ�� ��ǥ
         touchPosition = eventData.position;
         background.transform.position = touchPosition;
         handler.transform.position = touchPosition;
@@ -47,14 +44,12 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
         handler.transform.position = touchPosition;
         moveDir = Vector2.zero;
 
-        // temp1
-        //player.MoveDir = moveDir;
-        // temp2
-        Managers.moveDir = moveDir;
+        Managers.Game.MoveDir = moveDir;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        // 조이스틱 조종
         Vector2 touchDir = (eventData.position - touchPosition);
         float moveDist = Mathf.Min(touchDir.magnitude, radius);
         moveDir = touchDir.normalized;
@@ -62,10 +57,8 @@ public class UI_Joystick : MonoBehaviour, IPointerClickHandler, IPointerDownHand
         Vector2 nesPos = touchPosition + moveDir * moveDist;
         handler.transform.position = nesPos;
 
-        // temp1
-        //player.MoveDir = moveDir;
-        // temp2
-        Managers.moveDir = moveDir;
+        // 플레이어 이동
+        Managers.Game.MoveDir = moveDir;
     }
 
 }
