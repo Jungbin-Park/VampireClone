@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : CreatureController
 {
     Vector2 moveDir = Vector2.zero;
     float speed = 5.0f;

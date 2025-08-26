@@ -23,19 +23,20 @@ public class GameScene : MonoBehaviour
         });
     }
 
+
     void StartLoaded()
     {
-        GameObject prefab = Managers.Resource.Load<GameObject>("Slime_01.prefab");
+        GameObject player = Managers.Resource.Instantiate("Slime_01.prefab");
+        Utils.GetOrAddComponent<PlayerController>(player);
 
-        GameObject go = new GameObject() { name = "@Monsters" };
-        snake.transform.parent = go.transform;
-        //_slime.transform.parent = go.transform;
-        goblin.transform.parent = go.transform;
-
-
-        slime.AddComponent<PlayerController>();
-        Camera.main.GetComponent<CameraController>().target = slime;
+        var snake = Managers.Resource.Instantiate("Snake_01.prefab");
+        var goblin = Managers.Resource.Instantiate("Goblin_01.prefab");
+        var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
         joystick.name = "@UI_Joystick";
+
+        var map = Managers.Resource.Instantiate("Map.prefab");
+        map.name = "@Map";
+        Camera.main.GetComponent<CameraController>().target = player;
     }
 
     void Update()
