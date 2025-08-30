@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class BaseController : MonoBehaviour
 {
+    public ObjectType ObjType {  get; protected set; }
+
     void Awake()
     {
         Init();

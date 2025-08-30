@@ -27,6 +27,12 @@ public class ResourceManager
             return null;
         }
 
+        // Pooling
+        if(pooling)
+        {
+
+        }
+
         GameObject go = Object.Instantiate(prefab, parent);
         go.name = prefab.name;
         return go;
