@@ -49,7 +49,11 @@ public class PlayerController : CreatureController
     private void OnCollisionEnter2D(Collision2D collision)
     {
         MonsterController target = collision.gameObject.GetComponent<MonsterController>();
-        if (target == null) return;
+
+        if (target == null) 
+            return;
+        if (target.isActiveAndEnabled == false)
+            return;
     }
 
     public override void OnDamaged(BaseController attacker, int damage)

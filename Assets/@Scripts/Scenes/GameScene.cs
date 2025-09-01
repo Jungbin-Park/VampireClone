@@ -18,7 +18,13 @@ public class GameScene : MonoBehaviour
 
             if( count == totalCount )
             {
-                StartLoaded2();
+                Managers.Resource.LoadAllAsync<TextAsset>("Data", (key3, count3, totalCount3) =>
+                {
+                    if (count3 == totalCount3)
+                    {
+                        StartLoaded2();
+                    }
+                });
             }
         });
     }
@@ -40,8 +46,12 @@ public class GameScene : MonoBehaviour
         Camera.main.GetComponent<CameraController>().target = player;
     }
 
+    SpawningPool spawningPool;
+
     void StartLoaded2()
     {
+        spawningPool = gameObject.AddComponent<SpawningPool>();
+
         var player = Managers.Object.Spawn<PlayerController>();
 
         for(int i = 0; i < 10; i++)
@@ -57,6 +67,14 @@ public class GameScene : MonoBehaviour
         map.name = "@Map";
 
         Camera.main.GetComponent<CameraController>().target = player.gameObject;
+
+        // Data Test
+        Managers.Data.Init();
+
+        foreach(var playerData in Managers.Data.PlayerDic.Values)
+        {
+            Debug.Log($"Lvl : {playerData.level}, HP : {playerData.maxHp}");
+        }
     }
 
     void Update()

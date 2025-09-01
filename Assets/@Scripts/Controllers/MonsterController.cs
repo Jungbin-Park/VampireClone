@@ -47,7 +47,9 @@ public class MonsterController : CreatureController
     public void OnCollisionExit2D(Collision2D collision)
     {
         PlayerController target = collision.gameObject.GetComponent< PlayerController>();
-        if (target == null) return;
+        if (target == null) 
+            return;
+        
 
         // 코루틴 중지
         if(coDotDamage != null)
