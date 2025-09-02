@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2100934629104881864}
   - component: {fileID: 516157494662755543}
   - component: {fileID: 2430935851358431732}
-  - component: {fileID: 7754750619367364384}
+  - component: {fileID: 2863264147319432002}
   m_Layer: 0
   m_Name: Snake_01
   m_TagString: Untagged
@@ -135,8 +135,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &7754750619367364384
-BoxCollider2D:
+--- !u!58 &2863264147319432002
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,7 +144,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4435549500134576083}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 021d405e916fd214ba5f9d1a68997fbd, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -167,16 +167,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.42}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.83}
-    newSize: {x: 1.28, y: 0.83}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.94, y: 0.83}
-  m_EdgeRadius: 0
+  m_Radius: 0.4

@@ -12,52 +12,46 @@ public class GameScene : MonoBehaviour
     void Start()
     {
         // 모든 에셋 로드
-        Managers.Resource.LoadAllAsync<GameObject>("Prefabs", (key, count, totalCount) =>
+        Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count}/{totalCount}");
 
             if( count == totalCount )
             {
-                Managers.Resource.LoadAllAsync<TextAsset>("Data", (key3, count3, totalCount3) =>
-                {
-                    if (count3 == totalCount3)
-                    {
-                        StartLoaded2();
-                    }
-                });
+                StartLoaded();
             }
         });
     }
 
 
-    void StartLoaded()
-    {
-        GameObject player = Managers.Resource.Instantiate("Slime_01.prefab");
-        Utils.GetOrAddComponent<PlayerController>(player);
+    //void StartLoaded()
+    //{
+    //    GameObject player = Managers.Resource.Instantiate("Slime_01.prefab");
+    //    Utils.GetOrAddComponent<PlayerController>(player);
 
-        var snake = Managers.Resource.Instantiate("Snake_01.prefab");
-        var goblin = Managers.Resource.Instantiate("Goblin_01.prefab");
+    //    var snake = Managers.Resource.Instantiate("Snake_01.prefab");
+    //    var goblin = Managers.Resource.Instantiate("Goblin_01.prefab");
         
-        var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
-        joystick.name = "@UI_Joystick";
+    //    var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
+    //    joystick.name = "@UI_Joystick";
 
-        var map = Managers.Resource.Instantiate("Map.prefab");
-        map.name = "@Map";
-        Camera.main.GetComponent<CameraController>().target = player;
-    }
+    //    var map = Managers.Resource.Instantiate("Map.prefab");
+    //    map.name = "@Map";
+    //    Camera.main.GetComponent<CameraController>().target = player;
+    //}
 
     SpawningPool spawningPool;
 
-    void StartLoaded2()
+    void StartLoaded()
     {
         spawningPool = gameObject.AddComponent<SpawningPool>();
 
-        var player = Managers.Object.Spawn<PlayerController>();
+        var player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
 
         for(int i = 0; i < 10; i++)
         {
-            MonsterController mc = Managers.Object.Spawn<MonsterController>(Random.Range(0,2));
-            mc.transform.position = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            Vector3 randPos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+            MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(0,2));
         }
 
         var joystick = Managers.Resource.Instantiate("UI_Joystick.prefab");
