@@ -22,4 +22,5 @@ public static class Extension
 	{
 		return bc != null && bc.isActiveAndEnabled;
 	}
+
 }
