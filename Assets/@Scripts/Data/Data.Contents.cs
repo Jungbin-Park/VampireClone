@@ -36,6 +36,7 @@ namespace Data
     */
 
     // xml
+
     #region PlayerData
     public class PlayerData
     {
@@ -63,6 +64,7 @@ namespace Data
             return dict;
         }
     }
+
     #endregion
 
     #region MonsterData
@@ -86,6 +88,55 @@ namespace Data
         // - 일정 확률로
         // - 어떤 아이템을(보석, 스킬 가챠, 골드, 고기)
         // - 몇개 드롭?
+    }
+
+    #endregion
+
+    #region SkillData
+
+    [Serializable]
+    public class HitEffect
+    {
+        [XmlAttribute]
+        public string type;
+        [XmlAttribute]
+        public int templateID;
+        [XmlAttribute]
+        public int value;
+    }
+
+    public class SkillData
+    {
+        [XmlAttribute]
+        public int templateID;
+        [XmlAttribute(AttributeName="type")]
+        public Define.SkillType skillType = Define.SkillType.None;
+        [XmlAttribute]
+        public int nextID;
+        [XmlAttribute]
+        public string prefab;
+
+        // 아주 많이
+        [XmlAttribute]
+        public int damage;
+
+        //[XmlElement("HitEffect")]
+        //public List<HitEffect> hitEffects = new List<HitEffect>();
+    }
+
+    [Serializable, XmlRoot("SkillDatas")]
+    public class SkillDataLoader : ILoader<int, SkillData>
+    {
+        [XmlElement("SkillData")]
+        public List<SkillData> skills = new List<SkillData>();
+
+        public Dictionary<int, SkillData> MakeDict()
+        {
+            Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
+            foreach (SkillData skill in skills)
+                dict.Add(skill.templateID, skill);
+            return dict;
+        }
     }
 
     #endregion
