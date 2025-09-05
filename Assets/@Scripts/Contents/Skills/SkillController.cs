@@ -16,12 +16,17 @@ public class SkillController : BaseController
     
     public void StartDestroy(float delaySeconds)
     {
-
+        StopDestroy();
+        coDestroy = StartCoroutine(CoDestroy(delaySeconds));
     }
 
     public void StopDestroy()
     {
-
+        if(coDestroy != null)
+        {
+            StopCoroutine(coDestroy);
+            coDestroy = null;
+        }
     }
 
     IEnumerator CoDestroy(float delaySeconds)

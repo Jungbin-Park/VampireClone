@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Threading;
 using Unity.VisualScripting;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class PlayerController : CreatureController
@@ -11,17 +13,28 @@ public class PlayerController : CreatureController
 
     float EnvCollectDist { get; set; } = 1.0f;
 
+    [SerializeField]
+    Transform indicator;
+    [SerializeField]
+    Transform fireSocket;
+
     public Vector2 MoveDir
     {
         get { return moveDir; }
         set {  moveDir = value.normalized; }    
     }
 
-    void Start()
+    public override bool Init()
     {
-        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+        if(base.Init() == false)
+            return false;
 
         speed = 5.0f;
+        Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
+
+        StartProjectile();
+
+        return true;
     }
 
     private void OnDestroy()
@@ -48,6 +61,13 @@ public class PlayerController : CreatureController
         //moveDir = Managers.Game.MoveDir;
         Vector3 dir = moveDir * speed * Time.deltaTime;
         transform.position += dir;
+
+        if(moveDir != Vector2.zero)
+        {
+            indicator.eulerAngles = new Vector3(0, 0, Mathf.Atan2(-dir.x, dir.y) * 180 / Mathf.PI);
+        }
+
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     void CollectEnv()
@@ -70,7 +90,7 @@ public class PlayerController : CreatureController
 
         var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
 
-        Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
+        //Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -93,4 +113,32 @@ public class PlayerController : CreatureController
         CreatureController cc = attacker as CreatureController;
         cc?.OnDamaged(this, 10000);
     }
+
+    // TEMP
+    #region FireProjectile
+
+    Coroutine coFireProjectile;
+
+    void StartProjectile()
+    {
+        if(coFireProjectile != null)
+            StopCoroutine(coFireProjectile);
+
+        coFireProjectile = StartCoroutine(CoStartProjectile());
+    }
+
+    IEnumerator CoStartProjectile()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.5f);
+        
+        while(true)
+        {
+            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(fireSocket.position, 1);
+            pc.SetInfo(1, this, (fireSocket.position - indicator.position).normalized);
+
+            yield return wait;
+        }
+    }
+
+    #endregion
 }

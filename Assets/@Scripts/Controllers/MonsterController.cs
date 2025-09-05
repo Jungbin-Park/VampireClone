@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -33,8 +33,9 @@ public class MonsterController : CreatureController
     private void OnCollisionEnter2D(Collision2D collision)
     {
         PlayerController target = collision.gameObject.GetComponent<PlayerController>();
-
-        if(target == null) 
+        if(target.IsValid() == false) 
+            return;
+        if (this.IsValid() == false)
             return;
 
         if (coDotDamage != null)
@@ -47,11 +48,13 @@ public class MonsterController : CreatureController
     public void OnCollisionExit2D(Collision2D collision)
     {
         PlayerController target = collision.gameObject.GetComponent< PlayerController>();
-        if (target == null) 
+        if (target.IsValid() == false)
+            return;
+        if (this.IsValid() == false)
             return;
 
         // 코루틴 중지
-        if(coDotDamage != null)
+        if (coDotDamage != null)
             StopCoroutine(coDotDamage);
         coDotDamage = null;
     }

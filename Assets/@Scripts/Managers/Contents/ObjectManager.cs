@@ -60,12 +60,31 @@ public class ObjectManager
 
             return gc as T;
         }
+        else if (type == typeof(ProjectileController))
+        {
+            // TODO : templateID를 이용해서 데이터를 갖고와서 해당하는 프리팹을 갖고오도록
 
-        return null;
+            // TEMP
+            GameObject go = Managers.Resource.Instantiate("FireProjectile.prefab", pooling:true);
+            go.transform.position = position;
+
+            ProjectileController pc = go.GetOrAddComponent<ProjectileController>();
+            Projectiles.Add(pc);
+            pc.Init();
+
+            return pc as T;
+        }
+
+            return null;
     }
 
     public void Despawn<T>(T obj) where T : BaseController
     {
+        if(obj.IsValid() == false)
+        {
+            int a = 0;
+        }
+
         System.Type type = typeof(T);
 
         if(type == typeof(PlayerController) )
@@ -77,11 +96,6 @@ public class ObjectManager
             Monsters.Remove(obj as MonsterController);
             Managers.Resource.Destroy(obj.gameObject);
         }
-        else if(type == typeof(ProjectileController))
-        {
-            Projectiles.Remove(obj as ProjectileController);
-            Managers.Resource.Destroy(obj.gameObject);
-        }
         else if(type == typeof(GemController))
         {
             Gems.Remove(obj as GemController);
@@ -89,6 +103,11 @@ public class ObjectManager
 
             // Temp
             GameObject.Find("@Grid").GetComponent<GridController>().Remove(obj.gameObject);
+        }
+        else if (type == typeof(ProjectileController))
+        {
+            Projectiles.Remove(obj as ProjectileController);
+            Managers.Resource.Destroy(obj.gameObject);
         }
     }
 }
