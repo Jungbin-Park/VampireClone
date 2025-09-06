@@ -33,6 +33,7 @@ public class PlayerController : CreatureController
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
         StartProjectile();
+        StartEgoSword();
 
         return true;
     }
@@ -76,19 +77,24 @@ public class PlayerController : CreatureController
         float sqrCollectDist = EnvCollectDist * EnvCollectDist;
 
         // 스폰되어있는 모든 Gem들을 긁어옴
-        List<GemController> gems =  Managers.Object.Gems.ToList();
-        foreach(GemController gem in gems)
+        //List<GemController> gems =  Managers.Object.Gems.ToList();
+
+        // 그리드를 통해 주변 Gem들을 찾음
+        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
+
+        foreach (GameObject go in findGems)
         {
+            GemController gem = go.GetComponent<GemController>();
+
             // 아이템 획득 거리보다 가까우면 획득
             Vector3 dir = gem.transform.position - transform.position;
+            // 제곱근 연산 부하로 인해 제곱 계산
             if(dir.sqrMagnitude <= sqrCollectDist)
             {
                 Managers.Game.Gem += 1;
                 Managers.Object.Despawn(gem);
             }
         }
-
-        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
 
         //Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
     }
@@ -138,6 +144,22 @@ public class PlayerController : CreatureController
 
             yield return wait;
         }
+    }
+
+    #endregion
+
+    #region EgoSword
+
+    EgoSwordController egoSword;
+    void StartEgoSword()
+    {
+        if (egoSword.IsValid())
+            return;
+
+        egoSword = Managers.Object.Spawn<EgoSwordController>(indicator.position, Define.EGO_SWORD_ID);
+        egoSword.transform.SetParent(indicator);
+
+        egoSword.ActivateSkill();
     }
 
     #endregion

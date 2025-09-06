@@ -35,14 +35,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6e13c70e22cfcbc478daf3d84acba5c9
-    m_Address: Map.prefab
+  - m_GUID: a4e088561f76e6347a4d30c9c4b1d467
+    m_Address: EXPGem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a4e088561f76e6347a4d30c9c4b1d467
-    m_Address: EXPGem.prefab
+  - m_GUID: e7f5184bfcd0c914ab853f7992b25f79
+    m_Address: Map_01.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
