@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 3146652389643943606}
   - component: {fileID: 3146652389643943605}
   - component: {fileID: 3146652389643943604}
+  - component: {fileID: -7449004912967444821}
   m_Layer: 5
   m_Name: UI_GameScene
   m_TagString: Untagged
@@ -1273,6 +1274,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &-7449004912967444821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146652389643943603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8ba2f75d7764a4d87f356a00098742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCountText: {fileID: 3146652389793289182}
+  gemSlider: {fileID: 3146652389620903582}
 --- !u!1 &3146652389741355443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,7 +1852,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 125.17, y: -28}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 102.71, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3146652390611948486
 CanvasRenderer:

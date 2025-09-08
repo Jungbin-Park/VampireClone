@@ -46,6 +46,8 @@ public class GameScene : MonoBehaviour
     {
         Managers.Data.Init();
 
+        Managers.UI.ShowSceneUI<UI_GameScene>();
+
         spawningPool = gameObject.AddComponent<SpawningPool>();
 
         var player = Managers.Object.Spawn<PlayerController>(Vector3.zero);
