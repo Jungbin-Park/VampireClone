@@ -75,6 +75,8 @@ public class MonsterController : CreatureController
     {
         base.OnDead();
 
+        Managers.Game.KillCount++;
+
         // 코루틴 중지
         if (coDotDamage != null)
             StopCoroutine(coDotDamage);

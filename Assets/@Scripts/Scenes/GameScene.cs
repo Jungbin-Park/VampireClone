@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,10 +68,46 @@ public class GameScene : MonoBehaviour
         {
             Debug.Log($"Lvl : {playerData.level}, HP : {playerData.maxHp}");
         }
+
+        // 잼 획득 이벤트 구독
+        Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
+        Managers.Game.OnGemCountChanged += HandleOnGemCountChanged;
+        // 몬스터 처치 이벤트 구독
+        Managers.Game.OnKillCountChanged -= HandleOnKillCountChanged;
+        Managers.Game.OnKillCountChanged += HandleOnKillCountChanged;
     }
 
-    void Update()
+    // 젬 먹었을 시 처리
+    int collectedGemCount = 0;
+    int remainingToTotalGemCount = 10;
+    public void HandleOnGemCountChanged(int gemCount)
     {
-        
+        collectedGemCount++;
+
+        if (collectedGemCount == remainingToTotalGemCount)
+        {
+            Managers.UI.ShowPopup<UI_SkillSelectPopup>();
+            collectedGemCount = 0;
+            remainingToTotalGemCount *= 2;
+        }
+
+        Managers.UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)collectedGemCount / remainingToTotalGemCount);
+    }
+
+    public void HandleOnKillCountChanged(int killCount)
+    {
+        Managers.UI.GetSceneUI<UI_GameScene>().SetKillCount(killCount);
+
+        if(killCount == 5)
+        {
+            // Boss
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(Managers.Game != null)
+            Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
     }
 }

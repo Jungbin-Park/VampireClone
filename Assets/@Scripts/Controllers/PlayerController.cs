@@ -91,7 +91,9 @@ public class PlayerController : CreatureController
             // 제곱근 연산 부하로 인해 제곱 계산
             if(dir.sqrMagnitude <= sqrCollectDist)
             {
+                // 점수 증가
                 Managers.Game.Gem += 1;
+
                 Managers.Object.Despawn(gem);
             }
         }
