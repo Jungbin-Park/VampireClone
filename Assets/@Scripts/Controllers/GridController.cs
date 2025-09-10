@@ -64,7 +64,7 @@ public class GridController : BaseController
 
         Vector3Int left = grid.WorldToCell(pos + new Vector3(-range, 0));
         Vector3Int right = grid.WorldToCell(pos + new Vector3(+range, 0));
-        Vector3Int bottom = grid.WorldToCell(pos + new Vector3(0, range));
+        Vector3Int bottom = grid.WorldToCell(pos + new Vector3(0, -range));
         Vector3Int top = grid.WorldToCell(pos + new Vector3(0, +range));
 
         int minX = left.x;
