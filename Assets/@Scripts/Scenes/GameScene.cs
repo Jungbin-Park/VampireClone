@@ -43,6 +43,29 @@ public class GameScene : MonoBehaviour
 
     SpawningPool spawningPool;
 
+    Define.StageType stageType;
+    public Define.StageType StageType
+    {
+        get { return stageType; }
+        set
+        {
+            stageType = value;
+
+            if (spawningPool != null)
+            {
+                switch (value)
+                {
+                    case Define.StageType.Normal:
+                        spawningPool.Stopped = false;
+                        break;
+                    case Define.StageType.Boss:
+                        spawningPool.Stopped = true;
+                        break;
+                }
+            }
+        }
+    }
+
     void StartLoaded()
     {
         Managers.Data.Init();
@@ -101,7 +124,15 @@ public class GameScene : MonoBehaviour
         if(killCount == 5)
         {
             // Boss
+            StageType = Define.StageType.Boss;
 
+            // 일반 몬스터들 전부 삭제
+            Managers.Object.DespawnAllMonsters();
+
+            // 보스 몬스터 스폰
+            Vector2 spawnPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.transform.position, 5, 10);
+
+            Managers.Object.Spawn<MonsterController>(spawnPos, Define.BOSS_ID);
         }
     }
 

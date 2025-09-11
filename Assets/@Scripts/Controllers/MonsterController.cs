@@ -7,21 +7,75 @@ using UnityEngine.ResourceManagement.Diagnostics;
 
 public class MonsterController : CreatureController
 {
+    #region FSM
+
+    Define.CreatureState creatureState = Define.CreatureState.Moving;
+    public virtual Define.CreatureState CreatureState
+    {
+        get { return creatureState; }
+        set
+        {
+            creatureState = value;
+            // 상태 바뀌면 애니메이션 갱신
+            UpdateAnimation();
+        }
+    }
+
+    protected Animator animator;
+    public virtual void UpdateAnimation()
+    {
+
+    }
+
+    public override void UpdateController()
+    {
+        base.UpdateController();
+
+        switch(creatureState)
+        {
+            case Define.CreatureState.Idle:
+                UpdateIdle();
+                break;
+            case Define.CreatureState.Moving:
+                UpdateMoving(); 
+                break;
+            case Define.CreatureState.Skill:
+                UpdateSkill();
+                break;
+            case Define.CreatureState.Dead:
+                UpdateDead();
+                break;
+        }
+    }
+
+    protected virtual void UpdateIdle() { }
+    protected virtual void UpdateMoving() { }
+    protected virtual void UpdateSkill() { }
+    protected virtual void UpdateDead() { }
+
+    #endregion
+
     public override bool Init()
     {
         if(base.Init())
             return false;
 
+        animator = GetComponent<Animator>();
         // TODO
         ObjType = Define.ObjectType.Monster;
+        CreatureState = Define.CreatureState.Moving;
 
         return true;
     }
 
     void FixedUpdate()
     {
+        if (CreatureState != Define.CreatureState.Moving)
+            return;
+
         PlayerController pc = Managers.Object.Player;
-        if(pc == null ) return;
+        if(pc == null ) 
+            return;
 
         Vector3 dir = pc.transform.position - transform.position;
         Vector3 newPos = transform.position + dir.normalized * Time.deltaTime * speed;
