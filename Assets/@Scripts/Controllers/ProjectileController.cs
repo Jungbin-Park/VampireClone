@@ -4,13 +4,15 @@ using System.Net.Sockets;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ProjectileController : SkillController
+public class ProjectileController : SkillBase
 {
     // 항상 주인 오브젝트를 들고 있어야 함
     CreatureController owner;
     Vector3 moveDir;
     float speed = 10.0f;
     float lifeTime = 10.0f;
+
+    public ProjectileController() : base(Define.SkillType.None) { }
 
     public override bool Init()
     {

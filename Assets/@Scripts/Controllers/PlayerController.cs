@@ -18,6 +18,10 @@ public class PlayerController : CreatureController
     [SerializeField]
     Transform fireSocket;
 
+    public Transform Indicator { get { return indicator; } }
+    public Vector3 FireSocket { get { return fireSocket.position; } }
+    public Vector3 ShootDir { get { return (fireSocket.position - indicator.position).normalized; } }
+
     public Vector2 MoveDir
     {
         get { return moveDir; }
@@ -32,8 +36,8 @@ public class PlayerController : CreatureController
         speed = 5.0f;
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
-        StartProjectile();
-        StartEgoSword();
+        FireballSkill fireBall = Skills.AddSkill<FireballSkill>(transform.position);
+        EgoSword egoSword = Skills.AddSkill<EgoSword>(indicator.position);
 
         return true;
     }
@@ -122,47 +126,50 @@ public class PlayerController : CreatureController
         cc?.OnDamaged(this, 10000);
     }
 
+    
+
+
     // TEMP
     #region FireProjectile
 
-    Coroutine coFireProjectile;
+    //Coroutine coFireProjectile;
 
-    void StartProjectile()
-    {
-        if(coFireProjectile != null)
-            StopCoroutine(coFireProjectile);
+    //void StartProjectile()
+    //{
+    //    if(coFireProjectile != null)
+    //        StopCoroutine(coFireProjectile);
 
-        coFireProjectile = StartCoroutine(CoStartProjectile());
-    }
+    //    coFireProjectile = StartCoroutine(CoStartProjectile());
+    //}
 
-    IEnumerator CoStartProjectile()
-    {
-        WaitForSeconds wait = new WaitForSeconds(0.5f);
+    //IEnumerator CoStartProjectile()
+    //{
+    //    WaitForSeconds wait = new WaitForSeconds(0.5f);
         
-        while(true)
-        {
-            ProjectileController pc = Managers.Object.Spawn<ProjectileController>(fireSocket.position, 1);
-            pc.SetInfo(1, this, (fireSocket.position - indicator.position).normalized);
+    //    while(true)
+    //    {
+    //        ProjectileController pc = Managers.Object.Spawn<ProjectileController>(fireSocket.position, 1);
+    //        pc.SetInfo(1, this, (fireSocket.position - indicator.position).normalized);
 
-            yield return wait;
-        }
-    }
+    //        yield return wait;
+    //    }
+    //}
 
     #endregion
 
     #region EgoSword
 
-    EgoSwordController egoSword;
-    void StartEgoSword()
-    {
-        if (egoSword.IsValid())
-            return;
+    //EgoSword egoSword;
+    //void StartEgoSword()
+    //{
+    //    if (egoSword.IsValid())
+    //        return;
 
-        egoSword = Managers.Object.Spawn<EgoSwordController>(indicator.position, Define.EGO_SWORD_ID);
-        egoSword.transform.SetParent(indicator);
+    //    egoSword = Managers.Object.Spawn<EgoSword>(indicator.position, Define.EGO_SWORD_ID);
+    //    egoSword.transform.SetParent(indicator);
 
-        egoSword.ActivateSkill();
-    }
+    //    egoSword.ActivateSkill();
+    //}
 
     #endregion
 }
