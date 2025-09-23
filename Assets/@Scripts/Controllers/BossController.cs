@@ -6,11 +6,19 @@ public class BossController : MonsterController
 {
     public override bool Init()
     {
-        return base.Init();
+        base.Init();
 
-        //animator = GetComponent<Animator>();
-        CreatureState = Define.CreatureState.Moving;
+        animator = GetComponent<Animator>();
+
         Hp = 10000;
+
+        CreatureState = Define.CreatureState.Skill;
+
+        Skills.AddSkill<Move>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
+        Skills.AddSkill<Dash>(transform.position);
+        Skills.StartNextSequenceSkill();
 
         return true;
     }
@@ -26,7 +34,7 @@ public class BossController : MonsterController
                 animator.Play("Moving");
                 break;
             case Define.CreatureState.Skill:
-                animator.Play("Skill");
+                //animator.Play("Skill");
                 break;
             case Define.CreatureState.Dead:
                 animator.Play("Death");
@@ -34,37 +42,37 @@ public class BossController : MonsterController
         }
     }
 
-    protected override void UpdateIdle()
-    {
+    //protected override void UpdateIdle()
+    //{
         
-    }
+    //}
 
-    // Boss Collider + Player Collider
-    float range = 2.0f;
+    //// Boss Collider + Player Collider
+    //float range = 2.0f;
 
-    protected override void UpdateMoving()
-    {
-        PlayerController pc = Managers.Object.Player;
-        if (pc.IsValid() == false)
-            return;
+    //protected override void UpdateMoving()
+    //{
+    //    PlayerController pc = Managers.Object.Player;
+    //    if (pc.IsValid() == false)
+    //        return;
 
-        Vector3 dir = pc.transform.position - transform.position;
+    //    Vector3 dir = pc.transform.position - transform.position;
 
-        if(dir.magnitude < range)
-        {
-            CreatureState = Define.CreatureState.Skill;
+    //    if(dir.magnitude < range)
+    //    {
+    //        CreatureState = Define.CreatureState.Skill;
 
-            // animator.runtimeAnimatorController.animationClips;
-            float animLength = 0.41f;
-            Wait(animLength);
-        }
-    }
+    //        // animator.runtimeAnimatorController.animationClips;
+    //        float animLength = 0.41f;
+    //        Wait(animLength);
+    //    }
+    //}
 
-    protected override void UpdateSkill()
-    {
-        if (coWait == null)
-            CreatureState = Define.CreatureState.Moving;
-    }
+    //protected override void UpdateSkill()
+    //{
+    //    if (coWait == null)
+    //        CreatureState = Define.CreatureState.Moving;
+    //}
 
     protected override void UpdateDead()
     {

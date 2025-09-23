@@ -5,8 +5,8 @@ using UnityEngine;
 public class CreatureController : BaseController
 {
     protected float speed = 1.0f;
-    public int Hp { get; set; } = 100;
-    public int MaxHp { get; set; } = 100;
+    public int Hp { get; protected set; } = 100;
+    public int MaxHp { get; protected set; } = 100;
 
     public SkillBook Skills { get; protected set; }
 
