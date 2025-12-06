@@ -8,6 +8,7 @@ class Pool
     GameObject prefab;
     IObjectPool<GameObject> pool;
 
+    // 풀링 객체들을 묶어서 관리하기 위한 최상위 루트
     Transform root;
     Transform Root
     {
@@ -25,6 +26,7 @@ class Pool
 
     public Pool(GameObject _prefab)
     {
+        // 복사본 생성
         prefab = _prefab;
         pool = new ObjectPool<GameObject>(OnCreate, OnGet, OnRelease, OnDestroy);
     }
@@ -74,9 +76,11 @@ public class PoolManager
 
     public GameObject Pop(GameObject prefab)
     {
+        // 키 값에 해당하는 pool이 없으면 생성
         if(pools.ContainsKey(prefab.name) == false)
             CreatePool(prefab);
 
+        // 프리팹 이름을 키 값으로 사용
         return pools[prefab.name].Pop();
     }
 

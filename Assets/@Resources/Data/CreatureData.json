@@ -1,0 +1,91 @@
+{
+  "creatures": [
+    {
+      "DataId": 201000,
+      "DescriptionTextID": "기본슬라임",
+      "PrefabLabel": "Player",
+      "MaxHp": 100.0,
+      "MaxHpBonus": 2.0,
+      "Atk": 10.0,
+      "AtkBonus": 2.0,
+      "Def": 0.0,
+      "MoveSpeed": 6.0,
+      "TotalExp": 200.0,
+      "HpRate": 1.0,
+      "AtkRate": 1.0,
+      "DefRate": 1.0,
+      "MoveSpeedRate": 1.0,
+      "IconLabel": "Player_Icon.sprite",
+      "SkillTypeList": [
+        10001,
+        10011,
+        10021,
+        10031,
+        10041,
+        10051,
+        10061,
+        10081,
+        10131
+      ]
+    },
+    {
+      "DataId": 202001,
+      "DescriptionTextID": "고블린",
+      "PrefabLabel": "MonsterPrefab",
+      "MaxHp": 39.0,
+      "MaxHpBonus": 5.0,
+      "Atk": 2.0,
+      "AtkBonus": 2.0,
+      "Def": 0.0,
+      "MoveSpeed": 1.5,
+      "TotalExp": 200.0,
+      "HpRate": 1.0,
+      "AtkRate": 1.0,
+      "DefRate": 1.0,
+      "MoveSpeedRate": 1.0,
+      "IconLabel": "MonsterIcon_01.sprite",
+      "SkillTypeList": []
+    },
+    {
+      "DataId": 202002,
+      "DescriptionTextID": "스네이크",
+      "PrefabLabel": "MonsterPrefab",
+      "MaxHp": 39.0,
+      "MaxHpBonus": 5.0,
+      "Atk": 2.0,
+      "AtkBonus": 2.0,
+      "Def": 0.0,
+      "MoveSpeed": 2.0,
+      "TotalExp": 200.0,
+      "HpRate": 1.0,
+      "AtkRate": 1.0,
+      "DefRate": 1.0,
+      "MoveSpeedRate": 1.0,
+      "IconLabel": "MonsterIcon_01.sprite",
+      "SkillTypeList": []
+    },
+    {
+      "DataId": 204001,
+      "DescriptionTextID": "스니커",
+      "PrefabLabel": "BossPrefab",
+      "MaxHp": 11021.9873,
+      "MaxHpBonus": 19.0,
+      "Atk": 2.0,
+      "AtkBonus": 2.0,
+      "Def": 140.0,
+      "MoveSpeed": 1.0,
+      "TotalExp": 200.0,
+      "HpRate": 1.0,
+      "AtkRate": 1.0,
+      "DefRate": 1.0,
+      "MoveSpeedRate": 1.0,
+      "IconLabel": "BossIcon_01.sprite",
+      "SkillTypeList": [
+        100201,
+        100401,
+        100401,
+        100401
+      ]
+    }
+  ]
+}

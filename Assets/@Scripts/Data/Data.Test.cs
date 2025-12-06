@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace Data
 {
-    public class DropData
-    {
-        [XmlAttribute]
-        public string name;
-        [XmlAttribute]
-        public string type;
-        [XmlAttribute]
-        public int exp;
-    }
+    //public class DropData
+    //{
+    //    [XmlAttribute]
+    //    public string name;
+    //    [XmlAttribute]
+    //    public string type;
+    //    [XmlAttribute]
+    //    public int exp;
+    //}
 
 
 }

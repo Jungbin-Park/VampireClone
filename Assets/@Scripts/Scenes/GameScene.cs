@@ -3,27 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameScene : MonoBehaviour
+public class GameScene : BaseScene
 {
     GameObject snake;
     GameObject slime;
     GameObject goblin;
     GameObject joystick;
 
-    void Start()
+    private void Awake()
     {
+        Init();
+    }
+
+    protected override void Init()
+    {
+        Debug.Log("@>> GameScene Init()");
+        base.Init();
+        SceneType = Define.Scene.GameScene;
+
         // 모든 에셋 로드
         Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
         {
             Debug.Log($"{key} {count}/{totalCount}");
 
-            if( count == totalCount )
+            if (count == totalCount)
             {
                 StartLoaded();
             }
         });
-    }
 
+    }
 
     //void StartLoaded()
     //{
@@ -51,6 +60,7 @@ public class GameScene : MonoBehaviour
         {
             stageType = value;
 
+            // 일반/보스 스테이지에 따라 스포닝 풀 활성화/비활성화
             if (spawningPool != null)
             {
                 switch (value)
@@ -107,12 +117,12 @@ public class GameScene : MonoBehaviour
     {
         collectedGemCount++;
 
-        if (collectedGemCount == remainingToTotalGemCount)
-        {
-            Managers.UI.ShowPopup<UI_SkillSelectPopup>();
-            collectedGemCount = 0;
-            remainingToTotalGemCount *= 2;
-        }
+        //if (collectedGemCount == remainingToTotalGemCount)
+        //{
+        //    Managers.UI.ShowPopup<UI_SkillSelectPopup>();
+        //    collectedGemCount = 0;
+        //    remainingToTotalGemCount *= 2;
+        //}
 
         Managers.UI.GetSceneUI<UI_GameScene>().SetGemCountRatio((float)collectedGemCount / remainingToTotalGemCount);
     }
@@ -121,7 +131,7 @@ public class GameScene : MonoBehaviour
     {
         Managers.UI.GetSceneUI<UI_GameScene>().SetKillCount(killCount);
 
-        if(killCount == 5)
+        if(killCount == 50)
         {
             // Boss
             StageType = Define.StageType.Boss;
@@ -140,5 +150,10 @@ public class GameScene : MonoBehaviour
     {
         if(Managers.Game != null)
             Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
+    }
+
+    public override void Clear()
+    {
+        
     }
 }

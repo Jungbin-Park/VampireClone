@@ -17,17 +17,24 @@ public class DataManager
     public void Init()
     {
         // xml 방식
-        PlayerDic = LoadXml<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.xml").MakeDict();
-        SkillDic = LoadXml<Data.SkillDataLoader, int, Data.SkillData>("SkillData.xml").MakeDict();
+        //PlayerDic = LoadXml<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.xml").MakeDict();
+        //SkillDic = LoadXml<Data.SkillDataLoader, int, Data.SkillData>("SkillData.xml").MakeDict();
 
         // Json 방식
-        //PlayerDic = LoadJson<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.json").MakeDict();
+        PlayerDic = LoadJson<Data.PlayerDataLoader, int, Data.PlayerData>("PlayerData.json").MakeDict();
+        SkillDic = LoadJson<Data.SkillDataLoader, int, Data.SkillData>("SkillData.json").MakeDict();
     }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {
         TextAsset textAsset = Managers.Resource.Load<TextAsset>($"{path}");
+
+        // 로드된 문자열을 콘솔에 출력하여 확인 (핵심 진단!)
+        Debug.Log("Loaded JSON String:\n" + textAsset.text);
+
+        // 여기에 중단점(Breakpoint)을 설정하고 디버깅
         return JsonUtility.FromJson<Loader>(textAsset.text);
+        //return JsonConvert.DeserializeObject<Loader>(textAsset.text);
     }
 
     Item LoadSingleXml<Item>(string name)

@@ -36,6 +36,7 @@ public class PlayerController : CreatureController
         speed = 5.0f;
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
+        // 스킬 등록
         FireballSkill fireBall = Skills.AddSkill<FireballSkill>(transform.position);
         EgoSword egoSword = Skills.AddSkill<EgoSword>(indicator.position);
 
@@ -63,7 +64,6 @@ public class PlayerController : CreatureController
 
     void MovePlayer()
     {
-        //moveDir = Managers.Game.MoveDir;
         Vector3 dir = moveDir * speed * Time.deltaTime;
         transform.position += dir;
 
@@ -81,9 +81,9 @@ public class PlayerController : CreatureController
         float sqrCollectDist = EnvCollectDist * EnvCollectDist;
 
         // 스폰되어있는 모든 Gem들을 긁어옴
-        //List<GemController> gems =  Managers.Object.Gems.ToList();
+        List<GemController> gems =  Managers.Object.Gems.ToList();
 
-        // 그리드를 통해 주변 Gem들을 찾음
+        // 그리드를 통해 주변 Gem들을 찾음(CollectDist + 보석크기)
         var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
 
         foreach (GameObject go in findGems)
@@ -102,7 +102,7 @@ public class PlayerController : CreatureController
             }
         }
 
-        //Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
+        Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -119,9 +119,9 @@ public class PlayerController : CreatureController
     {
         base.OnDamaged(attacker, damage);
 
-        Debug.Log($"OnDamaged {Hp}");
+        //Debug.Log($"OnDamaged {Hp}");
 
-        // TEMP
+        // TEMP (임시 : 몬스터 닿으면 바로 죽게 하기 위해 데미지를 10000으로 되돌려 주기)
         CreatureController cc = attacker as CreatureController;
         cc?.OnDamaged(this, 10000);
     }

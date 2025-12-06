@@ -4,11 +4,24 @@ using UnityEngine;
 
 public static class Define
 { 
+    public enum UIEvent
+    {
+        Click,
+        Pressed,
+        PointerDown,
+        PointerUp,
+        BeginDrag,
+        Drag,
+        EndDrag,
+    }
+
     public enum Scene
     {
         Unknown,
         DevScene,
         GameScene,
+        Lobby,
+        Title,
     }
 
     public enum Sound
@@ -53,5 +66,5 @@ public static class Define
     public const int PLAYER_DATA_ID = 1;
     public const string EXP_GEM_PREFAB = "EXPGem.prefab";
 
-    public const int EGO_SWORD_ID = 10;
+    public const int EGO_SWORD_ID = 10010;
 }

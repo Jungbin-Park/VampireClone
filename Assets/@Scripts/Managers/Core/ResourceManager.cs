@@ -27,7 +27,7 @@ public class ResourceManager
             return null;
         }
 
-        // Pooling
+        // Pooling을 하는 객체이면
         if(pooling)
         {
             return Managers.Pool.Pop(prefab);
@@ -43,10 +43,11 @@ public class ResourceManager
         if (go == null)
             return;
 
-        // 풀링 오브젝트면 리턴
+        // 풀링 오브젝트면 풀에 Push 하고 리턴
         if (Managers.Pool.Push(go))
             return;
 
+        // 풀링 오브젝트가 아니면 Destroy
         Object.Destroy(go);
     }
 

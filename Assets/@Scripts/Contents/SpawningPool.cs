@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 주기적으로 몬스터 스폰
 public class SpawningPool : MonoBehaviour
 {
     // 리스폰 주기
+    float spawnInterval = 0.5f;
     // 몬스터 최대 수
-    float spawnInterval = 1.0f;
     int maxMonsterCount = 100;
     Coroutine coUpdateSpawningPool;
 

@@ -23,6 +23,7 @@ public class ProjectileController : SkillBase
         return true;
     }
 
+    // 상세 정보 세팅
     public void SetInfo(int templateID, CreatureController _owner, Vector3 _moveDir)
     {
         if (Managers.Data.SkillDic.TryGetValue(templateID, out Data.SkillData data) == false)
@@ -49,7 +50,7 @@ public class ProjectileController : SkillBase
         MonsterController mc = collision.gameObject.GetComponent<MonsterController>();
         if (mc.IsValid() == false)
             return;
-
+        // 미사일도 풀링을 하기 때문에 isvalid로 체크
         if (this.IsValid() == false)
             return;
 
