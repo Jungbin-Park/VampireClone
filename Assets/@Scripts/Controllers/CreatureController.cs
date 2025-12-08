@@ -1,14 +1,18 @@
+using Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CreatureController : BaseController
 {
-    protected float speed = 1.0f;
-    public int Hp { get; protected set; } = 100;
-    public int MaxHp { get; protected set; } = 100;
+    public CreatureData CreatureData;
 
-    public SkillBook Skills { get; protected set; }
+    public virtual int DataId { get; set; }
+    public virtual float Hp { get; set; }
+    public virtual float MaxHp { get; set; }
+    public virtual float Atk { get; set; }
+    public virtual float MoveSpeed { get; set; }
+    public virtual SkillBook Skills { get; protected set; }
 
     public override bool Init()
     {
@@ -19,6 +23,27 @@ public class CreatureController : BaseController
         Hp = 100;
 
         return true;
+    }
+
+    public virtual void InitCreatureStat(bool isFullHp = true)
+    {
+        //보스, 플레이어빼고 몬스터만
+        MaxHp = CreatureData.MaxHp;
+        Atk = CreatureData.Atk;
+        MoveSpeed = CreatureData.MoveSpeed;
+        Hp = MaxHp;
+    }
+
+    public virtual void UpdatePlayerStat() { }
+
+    public void SetInfo(int creatureId)
+    {
+        DataId = creatureId;
+        Dictionary<int, Data.CreatureData> dict = Managers.Data.CreatureDic;
+        CreatureData = dict[creatureId];
+        InitCreatureStat();
+
+        Init();
     }
 
     public virtual void OnDamaged(BaseController attacker, int damage)

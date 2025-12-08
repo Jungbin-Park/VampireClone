@@ -41,27 +41,20 @@ namespace Data
     public class CreatureData
     {
         public int DataId;
-        public string DescriptionTextID;
-        public string PrefabLabel;
+
+        public string Name;
+        public string Prefab;
         public float MaxHp;
-        public float MaxHpBonus;
         public float Atk;
-        public float AtkBonus;
-        public float Def;
         public float MoveSpeed;
         public float TotalExp;
-        public float HpRate;
-        public float AtkRate;
-        public float DefRate;
-        public float MoveSpeedRate;
-        public string IconLabel;
-        public List<int> SkillTypeList;//InGameSkills를 제외한 추가스킬들
     }
 
     [Serializable]
     public class CreatureDataLoader : ILoader<int, CreatureData>
     {
         public List<CreatureData> creatures = new List<CreatureData>();
+
         public Dictionary<int, CreatureData> MakeDict()
         {
             Dictionary<int, CreatureData> dict = new Dictionary<int, CreatureData>();
@@ -70,6 +63,7 @@ namespace Data
             return dict;
         }
     }
+
     #endregion
 
     #region SkillData(JSON)
@@ -100,6 +94,7 @@ namespace Data
     }
 
     #endregion
+
 
     // xml
 
@@ -135,26 +130,26 @@ namespace Data
 
     #region MonsterData
 
-    public class MonsterData
-    {
-        [XmlAttribute]
-        public string name;
-        [XmlAttribute]
-        public string prefab;
-        [XmlAttribute]
-        public int level;
-        [XmlAttribute]
-        public int maxHp;
-        [XmlAttribute]
-        public int attack;
-        [XmlAttribute]
-        public float speed;
-        
-        // DropData
-        // - 일정 확률로
-        // - 어떤 아이템을(보석, 스킬 가챠, 골드, 고기)
-        // - 몇개 드롭?
-    }
+    //public class MonsterData
+    //{
+    //    [XmlAttribute]
+    //    public string name;
+    //    [XmlAttribute]
+    //    public string prefab;
+    //    [XmlAttribute]
+    //    public int level;
+    //    [XmlAttribute]
+    //    public int maxHp;
+    //    [XmlAttribute]
+    //    public int attack;
+    //    [XmlAttribute]
+    //    public float speed;
+
+    //    // DropData
+    //    // - 일정 확률로
+    //    // - 어떤 아이템을(보석, 스킬 가챠, 골드, 고기)
+    //    // - 몇개 드롭?
+    //}
 
     #endregion
 

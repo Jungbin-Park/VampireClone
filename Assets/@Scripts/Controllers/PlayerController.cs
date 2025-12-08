@@ -33,7 +33,9 @@ public class PlayerController : CreatureController
         if(base.Init() == false)
             return false;
 
-        speed = 5.0f;
+        Debug.Log("Player Init");
+
+        MoveSpeed = 5.0f;
         Managers.Game.OnMoveDirChanged += HandleOnMoveDirChanged;
 
         // 스킬 등록
@@ -41,6 +43,22 @@ public class PlayerController : CreatureController
         EgoSword egoSword = Skills.AddSkill<EgoSword>(indicator.position);
 
         return true;
+    }
+
+    public override void InitCreatureStat(bool isFullHp = true)
+    {
+        // 현재 케릭터의 Stat 가져오기
+        //MaxHp = Managers.Game.CurrentCharacter.MaxHp;
+        //Atk = Managers.Game.CurrentCharacter.Atk;
+        //MoveSpeed = CreatureData.MoveSpeed * CreatureData.MoveSpeedRate;
+
+        //장비 합산 데이터 다 가져오기
+        //var (equip_hp, equip_attack) = Managers.Game.GetCurrentChracterStat();
+        //MaxHp += equip_hp;
+        //Atk += equip_attack;
+
+        if (isFullHp == true)
+            Hp = MaxHp;
     }
 
     private void OnDestroy()
@@ -64,14 +82,16 @@ public class PlayerController : CreatureController
 
     void MovePlayer()
     {
-        Vector3 dir = moveDir * speed * Time.deltaTime;
+        Vector3 dir = moveDir * MoveSpeed * Time.deltaTime;
         transform.position += dir;
 
         if(moveDir != Vector2.zero)
         {
+            // 각도(Degree) = 라디안 x 180/파이 
             indicator.eulerAngles = new Vector3(0, 0, Mathf.Atan2(-dir.x, dir.y) * 180 / Mathf.PI);
         }
 
+        // 속도는 직접 제어할 것이기 때문에 0으로 밀어주지 않으면 충돌에 따라 밀리는 경우 발생.
         GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
@@ -119,14 +139,10 @@ public class PlayerController : CreatureController
     {
         base.OnDamaged(attacker, damage);
 
-        //Debug.Log($"OnDamaged {Hp}");
-
         // TEMP (임시 : 몬스터 닿으면 바로 죽게 하기 위해 데미지를 10000으로 되돌려 주기)
-        CreatureController cc = attacker as CreatureController;
-        cc?.OnDamaged(this, 10000);
+        //CreatureController cc = attacker as CreatureController;
+        //cc?.OnDamaged(this, 10000);
     }
-
-    
 
 
     // TEMP

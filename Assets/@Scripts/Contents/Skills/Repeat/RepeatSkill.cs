@@ -7,7 +7,7 @@ public abstract class RepeatSkill : SkillBase
     public float CoolTime { get; set; } = 1.0f;
     public RepeatSkill() : base(Define.SkillType.Repeat)
     {
-
+        
     }
 
 

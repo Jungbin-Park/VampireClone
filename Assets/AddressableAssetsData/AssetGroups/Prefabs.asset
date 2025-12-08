@@ -17,7 +17,7 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f0e682a4f158db146b6c724e29cd07c7
   m_SerializeEntries:
-  - m_GUID: 27987b6e69bbdca40b6a57fdaaf69c68
+  - m_GUID: 901ce47e13234da45a7824da121ef7a8
     m_Address: Snake_01.prefab
     m_ReadOnly: 0
     m_SerializedLabels:

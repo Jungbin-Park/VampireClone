@@ -1,0 +1,21 @@
+{
+  "creatures": [
+    {
+      "DataId": 201000,
+      "Name": "Snake",
+      "Prefab": "Snake_01",
+      "MaxHp": 100.0,
+      "Atk": 5.0,
+      "MoveSpeed": 6.0
+    },
+    {
+      "DataId": 201001,
+      "Name": "Goblin",
+      "Prefab": "Goblin_01",
+      "MaxHp": 150.0,
+      "Atk": 10.0,
+      "MoveSpeed": 6.0
+    }
+  ]
+}
+
