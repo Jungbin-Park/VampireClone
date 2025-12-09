@@ -28,6 +28,8 @@ public class PlayerController : CreatureController
         set {  moveDir = value.normalized; }    
     }
 
+    private GridController gridController;
+
     public override bool Init()
     {
         if(base.Init() == false)
@@ -41,6 +43,8 @@ public class PlayerController : CreatureController
         // 스킬 등록
         FireballSkill fireBall = Skills.AddSkill<FireballSkill>(transform.position);
         EgoSword egoSword = Skills.AddSkill<EgoSword>(indicator.position);
+
+        gridController = GameObject.Find("@Grid").GetComponent<GridController>();
 
         return true;
     }
@@ -101,13 +105,16 @@ public class PlayerController : CreatureController
         float sqrCollectDist = EnvCollectDist * EnvCollectDist;
 
         // 스폰되어있는 모든 Gem들을 긁어옴
-        List<GemController> gems =  Managers.Object.Gems.ToList();
+        //List<GemController> gems =  Managers.Object.Gems.ToList();
 
         // 그리드를 통해 주변 Gem들을 찾음(CollectDist + 보석크기)
-        var findGems = GameObject.Find("@Grid").GetComponent<GridController>().GatherObjects(transform.position, EnvCollectDist + 0.5f);
+        var findGems = gridController.GatherObjects(transform.position, EnvCollectDist + 0.5f);
 
         foreach (GameObject go in findGems)
         {
+            if (findGems == null)
+                return;
+
             GemController gem = go.GetComponent<GemController>();
 
             // 아이템 획득 거리보다 가까우면 획득
@@ -122,7 +129,7 @@ public class PlayerController : CreatureController
             }
         }
 
-        Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
+        //Debug.Log($"SearchGems({findGems.Count}), TotalGems({gems.Count}");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

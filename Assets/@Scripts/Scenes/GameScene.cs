@@ -102,6 +102,10 @@ public class GameScene : BaseScene
             Debug.Log($"Lvl : {playerData.level}, HP : {playerData.maxHp}");
         }
 
+
+        // ============
+        //   UI 갱신
+        // ============
         // 잼 획득 이벤트 구독
         Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
         Managers.Game.OnGemCountChanged += HandleOnGemCountChanged;
@@ -110,9 +114,9 @@ public class GameScene : BaseScene
         Managers.Game.OnKillCountChanged += HandleOnKillCountChanged;
     }
 
-    // 젬 먹었을 시 처리
-    int collectedGemCount = 0;
-    int remainingToTotalGemCount = 10;
+    // TEMP : 젬 먹었을 시 처리
+    int collectedGemCount = 0;          // 현재 먹은 잼
+    int remainingToTotalGemCount = 10;  // 다음 레벨까지 남은 잼
     public void HandleOnGemCountChanged(int gemCount)
     {
         collectedGemCount++;
@@ -149,7 +153,11 @@ public class GameScene : BaseScene
     private void OnDestroy()
     {
         if(Managers.Game != null)
+        {
             Managers.Game.OnGemCountChanged -= HandleOnGemCountChanged;
+            Managers.Game.OnGemCountChanged -= HandleOnKillCountChanged;
+        }
+            
     }
 
     public override void Clear()

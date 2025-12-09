@@ -47,12 +47,13 @@ public class ObjectManager
                     break;
             }
 
+            Data.CreatureData cd = Managers.Data.CreatureDic[templateID];
             GameObject go = Managers.Resource.Instantiate(name + ".prefab", pooling: true);
-            go.transform.position = position;
-
             MonsterController mc = go.GetOrAddComponent<MonsterController>();
+            go.transform.position = position;
+            mc.SetInfo(templateID);
+            go.name = cd.Prefab;
             Monsters.Add(mc);
-            mc.Init();
 
             return mc as T;
         }

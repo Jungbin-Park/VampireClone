@@ -20,8 +20,6 @@ public class CreatureController : BaseController
 
         Skills = gameObject.GetOrAddComponent<SkillBook>();
 
-        Hp = 100;
-
         return true;
     }
 

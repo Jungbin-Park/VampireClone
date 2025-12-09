@@ -60,6 +60,11 @@ public class GridController : BaseController
 
     public List<GameObject> GatherObjects(Vector3 pos, float range)
     {
+        if (grid == null)
+        {
+            grid = gameObject.GetComponent<Grid>();
+        }
+
         List<GameObject> objects = new List<GameObject>();
 
         Vector3Int left = grid.WorldToCell(pos + new Vector3(-range, 0));
