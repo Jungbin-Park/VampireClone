@@ -44,6 +44,7 @@ public class UIManager
         RefreshTimeScale();
     }
 
+    // 팝업이 뜨면 게임 시간 일시정지
     public void RefreshTimeScale()
     {
         if (uiStack.Count > 0)

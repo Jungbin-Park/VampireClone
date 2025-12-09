@@ -37,6 +37,6 @@ public class SpawningPool : MonoBehaviour
             return;
 
         Vector3 randPos = Utils.GenerateMonsterSpawnPosition(Managers.Game.Player.transform.position, 10, 15);
-        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(1, 3));
+        MonsterController mc = Managers.Object.Spawn<MonsterController>(randPos, Random.Range(Define.GOBLIN_ID, Define.SNAKE_ID));
     }
 }

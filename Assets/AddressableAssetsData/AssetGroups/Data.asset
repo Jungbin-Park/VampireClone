@@ -23,8 +23,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 625368ac9fd3da04ea37272027fc9287
-    m_Address: MonsterData.json
+  - m_GUID: d1085461a6241824eafac3ac71ef12ee
+    m_Address: CreatureData.json
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad

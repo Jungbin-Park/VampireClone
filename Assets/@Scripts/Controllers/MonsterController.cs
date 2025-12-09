@@ -57,11 +57,10 @@ public class MonsterController : CreatureController
 
     public override bool Init()
     {
-        if(base.Init() == false)
-            return false;
+        base.Init();
 
         animator = GetComponent<Animator>();
-        // TODO
+        
         ObjType = Define.ObjectType.Monster;
         CreatureState = Define.CreatureState.Moving;
 
@@ -74,7 +73,7 @@ public class MonsterController : CreatureController
             return;
 
         PlayerController pc = Managers.Object.Player;
-        if(pc == null ) 
+        if (pc.IsValid() == false)
             return;
 
         Vector3 dir = pc.transform.position - transform.position;
