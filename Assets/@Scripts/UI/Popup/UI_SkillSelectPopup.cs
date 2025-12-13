@@ -7,7 +7,7 @@ public class UI_SkillSelectPopup : UI_Base
     [SerializeField]
     Transform grid;
 
-    List<UI_SkillCardItem> items = new List<UI_SkillCardItem>(); 
+    List<UI_SkillCardItem> items = new List<UI_SkillCardItem>();
 
     void Start()
     {
