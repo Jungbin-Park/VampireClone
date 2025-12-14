@@ -13,6 +13,24 @@ public class ObjectManager
     public HashSet<ProjectileController> Projectiles { get; } = new HashSet<ProjectileController>();
     public HashSet<GemController> Gems { get; } = new HashSet<GemController>();
 
+    public ObjectManager()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+
+    }
+
+    public void Clear()
+    {
+        Monsters.Clear();
+        Gems.Clear();
+        //Souls.Clear();
+        Projectiles.Clear();
+    }
+
     public T Spawn<T>(Vector3 position, int templateID = 0) where T : BaseController
     {
         System.Type type = typeof(T);

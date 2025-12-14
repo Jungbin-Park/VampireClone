@@ -60,4 +60,29 @@ public class GameManager
     }
 
     #endregion
+
+
+    public bool IsLoaded = false;
+    public bool IsGameEnd = false;
+
+    public CameraController CameraController { get; set; }
+
+    public void Init()
+    {
+
+    }
+
+
+
+
+    #region 저장/불러오기
+
+    string _path;
+
+    public void SaveGame()
+    {
+
+    }
+
+    #endregion
 }

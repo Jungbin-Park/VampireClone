@@ -8,6 +8,7 @@ public class Managers : MonoBehaviour
     static bool s_init = false;
 
     #region Contents
+
     GameManager game  = new GameManager();
     ObjectManager obj = new ObjectManager();
     PoolManager pool = new PoolManager();
@@ -18,6 +19,7 @@ public class Managers : MonoBehaviour
     #endregion
 
     #region Core
+
     DataManager data = new DataManager();
     ResourceManager resource = new ResourceManager();
     SceneManagerEx scene = new SceneManagerEx();
@@ -58,4 +60,12 @@ public class Managers : MonoBehaviour
         }
     }
 
+    public static void Clear()
+    {
+        Sound.Clear();
+        Scene.Clear();
+        UI.Clear();
+        Pool.Clear();
+        Object.Clear();
+    }
 }

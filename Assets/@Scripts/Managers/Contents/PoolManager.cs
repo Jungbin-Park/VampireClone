@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -91,6 +92,11 @@ public class PoolManager
 
         pools[go.name].Push(go);
         return true;
+    }
+
+    public void Clear()
+    {
+        pools.Clear();
     }
 
     void CreatePool(GameObject prefab)

@@ -23,15 +23,15 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.GameScene;
 
         // 모든 에셋 로드
-        Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
-        {
-            Debug.Log($"{key} {count}/{totalCount}");
+        //Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
+        //{
+        //    Debug.Log($"{key} {count}/{totalCount}");
 
-            if (count == totalCount)
-            {
-                StartLoaded();
-            }
-        });
+        //    if (count == totalCount)
+        //    {
+        //        StartLoaded();
+        //    }
+        //});
 
     }
 
@@ -94,9 +94,6 @@ public class GameScene : BaseScene
         map.name = "@Map";
 
         Camera.main.GetComponent<CameraController>().target = player.gameObject;
-
-        // Data Test
-        Managers.Data.Init();
 
         foreach(var playerData in Managers.Data.PlayerDic.Values)
         {
