@@ -28,6 +28,16 @@
       "MoveSpeed": 2.0,
       "TotalExp": 200.0,
       "SkillTypeList": []
+    },
+    {
+      "DataId": 203000,
+      "Name": "Boss",
+      "Prefab": "Boss_01",
+      "MaxHp": 1000.0,
+      "Atk": 20.0,
+      "MoveSpeed": 5.0,
+      "TotalExp": 500.0,
+      "SkillTypeList": []
     }
   ]
 }

@@ -2,17 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_LobbyScene : MonoBehaviour
+public class UI_LobbyScene : UI_Scene
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    #region enum
+    // 들고 있는 UI 오브젝트들 ENUM
+    enum GameObjects
     {
-        
+        MenuToggleGroup,
+        CheckShopImageObject,
+        CheckEquipmentImageObject,
+        CheckBattleImageObject,
     }
 
-    // Update is called once per frame
-    void Update()
+    enum Buttons
     {
-        
+
     }
+
+    enum Texts
+    {
+        ShopToggleText,
+        EquipmentToggleText,
+        BattleToggleText,
+        StaminaValueText,
+        DiaValueText,
+        GoldValueText
+    }
+
+    enum Toggles
+    {
+        ShopToggle,
+        EquipmentToggle,
+        BattleToggle,
+    }
+
+    enum Images
+    {
+        Backgroundimage,
+    }
+
+    #endregion region
+
+    
+
+
 }

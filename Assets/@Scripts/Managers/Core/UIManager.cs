@@ -12,7 +12,6 @@ public class UIManager
     int _order = 10;
     int _toastOrder = 500;
 
-    UI_Base sceneUI;
     Stack<UI_Base> uiStack = new Stack<UI_Base>();
     UI_Scene _sceneUI = null;
     public UI_Scene SceneUI { get { return _sceneUI; } }
@@ -67,19 +66,24 @@ public class UIManager
 
     public T GetSceneUI<T>() where T : UI_Base
     {
-        return sceneUI as T;
+        return _sceneUI as T;
     }
 
-    public T ShowSceneUI<T>() where T : UI_Base
+    public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
-        if (sceneUI != null)
+        if (string.IsNullOrEmpty(name))
+            name = typeof(T).Name;
+
+        if (_sceneUI != null)
             return GetSceneUI<T>();
 
-        string key = typeof(T).Name + ".prefab";
-        T ui = Managers.Resource.Instantiate(key, pooling:true).GetOrAddComponent<T>();
-        sceneUI = ui;
+        GameObject go = Managers.Resource.Instantiate($"{name}");
+        T sceneUI = Utils.GetOrAddComponent<T>(go);
+        _sceneUI = sceneUI;
 
-        return ui;
+        go.transform.SetParent(Root.transform);
+
+        return sceneUI;
     }
 
     public T ShowPopup<T>() where T : UI_Base

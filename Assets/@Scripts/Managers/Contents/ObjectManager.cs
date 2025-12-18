@@ -52,6 +52,7 @@ public class ObjectManager
         {
             string name = "";
 
+            // TODO : 데이터 시트 반영하는 방식으로 바꿔야 함
             switch(templateID)
             {
                 case Define.GOBLIN_ID:

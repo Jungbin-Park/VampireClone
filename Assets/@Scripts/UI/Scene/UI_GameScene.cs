@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_GameScene : UI_Base
+public class UI_GameScene : UI_Scene
 {
     [SerializeField]
     TextMeshProUGUI killCountText;

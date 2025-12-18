@@ -60,7 +60,7 @@ public static class Define
 
     public const int GOBLIN_ID = 202001;
     public const int SNAKE_ID = 202002;
-    public const int BOSS_ID = 3;
+    public const int BOSS_ID = 203000;
 
     public const int PLAYER_DATA_ID = 201000;
     public const string EXP_GEM_PREFAB = "EXPGem.prefab";

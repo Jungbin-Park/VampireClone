@@ -65,7 +65,7 @@ public class UI_TitleScene : UI_Scene
                 GetButton((int)Buttons.StartButton).gameObject.SetActive(true);
                 Managers.Data.Init();
                 Managers.Game.Init();
-                Managers.Time.Init();
+                //Managers.Time.Init();
                 StartButtonAnimation();
             }
         });
