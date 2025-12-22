@@ -142,7 +142,7 @@ public class PlayerController : CreatureController
             return;
     }
 
-    public override void OnDamaged(BaseController attacker, int damage)
+    public override void OnDamaged(BaseController attacker, float damage = 0)
     {
         base.OnDamaged(attacker, damage);
 

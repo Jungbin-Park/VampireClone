@@ -44,7 +44,7 @@ public class CreatureController : BaseController
         Init();
     }
 
-    public virtual void OnDamaged(BaseController attacker, int damage)
+    public virtual void OnDamaged(BaseController attacker, float damage = 0)
     {
         if (Hp <= 0)
             return;

@@ -63,4 +63,12 @@ public class Utils
 
         return spawnPosition;
     }
+
+    public static Color HexToColor(string color)
+    {
+        Color parsedColor;
+        ColorUtility.TryParseHtmlString("#" + color, out parsedColor);
+
+        return parsedColor;
+    }
 }

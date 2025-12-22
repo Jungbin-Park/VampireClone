@@ -18,6 +18,15 @@ public class EgoSword : RepeatSkill
 
     public EgoSword() { }
 
+    public override bool Init()
+    {
+        base.Init();
+
+        SkillType = Define.SkillType.EgoSword;
+
+        return true;
+    }
+
 
     protected override IEnumerator CoStartSkill()
     {
@@ -45,12 +54,7 @@ public class EgoSword : RepeatSkill
         }
     }
 
-    public override bool Init()
-    {
-        base.Init();
-
-        return true;
-    }
+    
 
     void SetParticles(SwingType swingType)
     {
@@ -73,7 +77,7 @@ public class EgoSword : RepeatSkill
         if (mc.IsValid() == false)
             return;
 
-        mc.OnDamaged(Owner, Damage);
+        mc.OnDamaged(Owner, TotalDamage);
     }
 
     protected override void DoSkillJob()

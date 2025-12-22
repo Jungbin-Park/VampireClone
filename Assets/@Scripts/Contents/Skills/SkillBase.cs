@@ -1,26 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
-// EgoSword : 평타
-// FireProjectile : 화염구
-// PosionField : 장판
+
+
 public class SkillBase : BaseController
 {
     public CreatureController Owner { get; set; }
-    public Define.SkillType SkillType {  get; set; } = Define.SkillType.None;
-    public Data.SkillData SkillData { get; protected set; }
 
-    // 0: 사용 안 함, 1 : 사용
-    public int SkillLevel { get; set; } = 0;
-    public bool IsLearnedSkill { get { return SkillLevel > 0; } }
-
-    public int Damage { get; set; } = 100;
-
-    public SkillBase(Define.SkillType skillType)
-    {
-        SkillType = skillType;
+    Define.SkillType skillType;
+    public Define.SkillType SkillType 
+    {  
+        get
+        {
+            return skillType;
+        }
+        set
+        {
+            skillType = value;
+        }
     }
+
+    #region Level
+
+    int level = 0;
+    public int Level
+    {
+        get { return level; }
+        set { level = value; }
+    }
+
+    #endregion
+
+    #region SkillData
+
+    [SerializeField]
+    public Data.SkillData skillData;
+    public Data.SkillData SkillData 
+    { 
+        get { return skillData; }
+        set
+        {
+            skillData = value;
+        }
+    }
+
+    #endregion
+
+    public float TotalDamage { get; set; } = 0;
+    public bool IsLearnedSkill { get { return Level > 0; } }
+
 
     public virtual void ActivateSkill() { }
     public virtual void GenerateProjectile(int templateID, CreatureController owner, Vector3 startPos, Vector3 dir, Vector3 targetPos) 

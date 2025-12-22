@@ -1,24 +1,46 @@
 {
   "skills": [
     {
-      "templateID": 10001,
-      "name": "화염구",
-      "type": "Projectile",
-      "prefab": "FireProjectile.prefab",
-      "damage":  100
+      "DataId": 10001,
+      "name": "에고 소드",
+      "Description": "주변의 적에게 검기를 날려 공격한다",
+      "prefab": "EgoSword.prefab",
+      "CoolTime": 2.7,
+      "damage": 100,
+      "NumProjectiles": 1
+    },
+    {
+      "templateID": 10002,
+      "name": "에고 소드",
+      "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
+      "prefab": "EgoSword.prefab",
+      "CoolTime": 2.4,
+      "damage": 100,
+      "NumProjectiles": 2
+    },
+    {
+      "templateID": 10003,
+      "name": "에고 소드",
+      "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
+      "prefab": "EgoSword.prefab",
+      "CoolTime": 2.1,
+      "damage": 100,
+      "NumProjectiles": 3
+    },
+    {
+      "templateID": 10004,
+      "name": "에고 소드",
+      "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
+      "prefab": "EgoSword.prefab",
+      "CoolTime": 1.8,
+      "damage": 100,
+      "NumProjectiles": 4
     },
     {
       "templateID": 10010,
-      "name": "평타",
-      "type": "Melee",
-      "prefab": "EgoSword.prefab",
-      "damage": 100
-    },
-    {
-      "templateID": 10020,
-      "name": "평타",
-      "type": "Melee",
-      "prefab": "Fireball.prefab",
+      "name": "화염구",
+      "type": "Projectile",
+      "prefab": "FireProjectile.prefab",
       "damage": 100
     }
   ]

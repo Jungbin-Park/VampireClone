@@ -39,9 +39,9 @@ public static class Define
 
     public enum SkillType
     {
-        None,
-        Sequence,
-        Repeat,
+        None = 0,
+        EgoSword = 10001,
+        FireBall = 10011,
     }
 
     public enum StageType

@@ -71,12 +71,14 @@ namespace Data
     [Serializable]
     public class SkillData
     {
-        public int templateID;
+        public int DataId;
 
         public string name;
-        public string type;
+        public string Description;
         public string prefab;
-        public int damage;
+        public float CoolTime;
+        public float damage;
+        public int NumProjectiles;
     }
 
     [Serializable]
@@ -88,7 +90,7 @@ namespace Data
         {
             Dictionary<int, SkillData> dict = new Dictionary<int, SkillData>();
             foreach (SkillData skill in skills)
-                dict.Add(skill.templateID, skill);
+                dict.Add(skill.DataId, skill);
             return dict;
         }
     }

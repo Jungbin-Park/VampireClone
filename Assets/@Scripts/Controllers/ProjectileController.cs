@@ -12,7 +12,6 @@ public class ProjectileController : SkillBase
     float speed = 10.0f;
     float lifeTime = 10.0f;
 
-    public ProjectileController() : base(Define.SkillType.None) { }
 
     public override bool Init()
     {

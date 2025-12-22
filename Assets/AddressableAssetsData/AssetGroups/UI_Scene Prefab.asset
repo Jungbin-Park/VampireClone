@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: UI Prefabs
+  m_Name: UI_Scene Prefab
   m_EditorClassIdentifier: 
-  m_GroupName: UI Prefabs
+  m_GroupName: UI_Scene Prefab
   m_Data:
     m_SerializedData: []
   m_GUID: 07e379462c5636f4caa590311f3da92f
@@ -23,20 +23,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6908c3923f4800843a5d66eac1a26678
+    m_Address: UI_TitleScene.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c713296a7074cfa489038a0548f2fce7
+    m_Address: UI_LobbyScene.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PreLoad
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf0e35c2766b1e54192ed2f3c51b78a5
     m_Address: UI_GameScene.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25c506db09b99cb4cb3b4345b20c12cb
-    m_Address: UI_SkillCardItem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - PreLoad
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a7d55ddd4af38e04e80c8f9a9a6586b5
-    m_Address: UI_SkillSelectPopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
