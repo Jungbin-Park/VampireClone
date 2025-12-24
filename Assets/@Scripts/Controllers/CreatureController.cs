@@ -18,6 +18,7 @@ public class CreatureController : BaseController
     {
         base.Init();
 
+        // 게임 오브젝트에 스킬북 추가
         Skills = gameObject.GetOrAddComponent<SkillBook>();
 
         return true;

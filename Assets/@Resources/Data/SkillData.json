@@ -10,7 +10,7 @@
       "NumProjectiles": 1
     },
     {
-      "templateID": 10002,
+      "DataId": 10002,
       "name": "에고 소드",
       "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
       "prefab": "EgoSword.prefab",
@@ -19,7 +19,7 @@
       "NumProjectiles": 2
     },
     {
-      "templateID": 10003,
+      "DataId": 10003,
       "name": "에고 소드",
       "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
       "prefab": "EgoSword.prefab",
@@ -28,7 +28,7 @@
       "NumProjectiles": 3
     },
     {
-      "templateID": 10004,
+      "DataId": 10004,
       "name": "에고 소드",
       "Description": "피해량이 증가하고 검기의 개수가 1회 증가한다.",
       "prefab": "EgoSword.prefab",
@@ -37,7 +37,7 @@
       "NumProjectiles": 4
     },
     {
-      "templateID": 10010,
+      "DataId": 10010,
       "name": "화염구",
       "type": "Projectile",
       "prefab": "FireProjectile.prefab",

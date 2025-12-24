@@ -22,16 +22,16 @@ public class GameScene : BaseScene
         base.Init();
         SceneType = Define.Scene.GameScene;
 
-        // 모든 에셋 로드
-        //Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
-        //{
-        //    Debug.Log($"{key} {count}/{totalCount}");
+        // TEMP : 모든 에셋 로드 (타이틀 화면에서 로딩해야됨)
+        Managers.Resource.LoadAllAsync<Object>("PreLoad", (key, count, totalCount) =>
+        {
+            Debug.Log($"{key} {count}/{totalCount}");
 
-        //    if (count == totalCount)
-        //    {
-        //        StartLoaded();
-        //    }
-        //});
+            if (count == totalCount)
+            {
+                StartLoaded();
+            }
+        });
 
     }
 

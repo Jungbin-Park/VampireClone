@@ -27,6 +27,16 @@ public class EgoSword : RepeatSkill
         return true;
     }
 
+    public override void ActivateSkill()
+    {
+        base.ActivateSkill();
+    }
+
+    public override void OnLevelUp()
+    {
+        base.OnLevelUp();
+    }
+
 
     protected override IEnumerator CoStartSkill()
     {
@@ -82,6 +92,6 @@ public class EgoSword : RepeatSkill
 
     protected override void DoSkillJob()
     {
-        
+        StartCoroutine(CoStartSkill());
     }
 }

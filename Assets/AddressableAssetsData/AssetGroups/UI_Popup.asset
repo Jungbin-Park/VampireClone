@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: UI_Scene Prefab
+  m_Name: UI_Popup
   m_EditorClassIdentifier: 
-  m_GroupName: UI_Scene Prefab
+  m_GroupName: UI_Popup
   m_Data:
     m_SerializedData: []
-  m_GUID: 07e379462c5636f4caa590311f3da92f
+  m_GUID: 9320cedf1ef341e448722441154305dc
   m_SerializeEntries:
-  - m_GUID: 4f8f40d1d29d7f14bb3ab21d5c59afa8
-    m_Address: UI_Joystick.prefab
+  - m_GUID: 25c506db09b99cb4cb3b4345b20c12cb
+    m_Address: UI_SkillCardItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6908c3923f4800843a5d66eac1a26678
-    m_Address: UI_TitleScene.prefab
+  - m_GUID: a4b4bdb16bf1cd44e9f05d589c63c704
+    m_Address: UI_BattlePopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c713296a7074cfa489038a0548f2fce7
-    m_Address: UI_LobbyScene.prefab
+  - m_GUID: a7d55ddd4af38e04e80c8f9a9a6586b5
+    m_Address: UI_SkillSelectPopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf0e35c2766b1e54192ed2f3c51b78a5
-    m_Address: UI_GameScene.prefab
+  - m_GUID: d85e52f3ba43b91479a15ff0f096ea07
+    m_Address: UI_GameResultPopup.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - PreLoad
@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 76adb75e2afa4a5419cbf9edc01d5e25, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: cfb6ffce879d9344c8842ce127256645, type: 2}
-    - {fileID: 11400000, guid: 6345f12a7f057c6469b2435dd9965bd0, type: 2}
+    - {fileID: 11400000, guid: 8fe2cefe5735b8f43b4c534cd838540a, type: 2}
+    - {fileID: 11400000, guid: c91d2377d10f6c440aa1d1b2b28ea7ba, type: 2}

@@ -59,6 +59,8 @@ public class UI_TitleScene : UI_Scene
         {
             GetObject((int)GameObjects.Slider).GetComponent<Slider>().value = (float)count / totalCount;
 
+            Debug.Log($"{key} {count}/{totalCount}");
+
             if (count == totalCount)
             {
                 isPreload = true;

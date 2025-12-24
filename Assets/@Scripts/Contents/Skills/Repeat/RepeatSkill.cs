@@ -6,6 +6,11 @@ public abstract class RepeatSkill : SkillBase
 {
     public float CoolTime { get; set; } = 1.0f;
 
+    public override bool Init()
+    {
+        base.Init();
+        return true;
+    }
 
     #region CoSkill
 
@@ -13,9 +18,11 @@ public abstract class RepeatSkill : SkillBase
 
     public override void ActivateSkill()
     {
+        base.ActivateSkill();
         if (coSkill != null)
             StopCoroutine(coSkill);
 
+        gameObject.SetActive(true);
         coSkill = StartCoroutine(CoStartSkill());
     }
 
@@ -24,9 +31,11 @@ public abstract class RepeatSkill : SkillBase
 
     protected virtual IEnumerator CoStartSkill()
     {
-        WaitForSeconds wait = new WaitForSeconds(CoolTime);
+        // 스킬데이터의 쿨타임 적용
+        WaitForSeconds wait = new WaitForSeconds(SkillData.CoolTime);
+        yield return wait;
 
-        while(true)
+        while (true)
         {
             DoSkillJob();
 

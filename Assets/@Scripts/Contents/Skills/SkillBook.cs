@@ -6,10 +6,11 @@ public class SkillBook : MonoBehaviour
 {
     // 일종의 스킬 매니저
     
+    // 모든 스킬
     public List<SkillBase> Skills { get; } = new List<SkillBase>();
-
+    // 반복 스킬
     public List<RepeatSkill> RepeatedSkills { get; } = new List<RepeatSkill>();
-
+    // 시퀀스 스킬
     public List<SequenceSkill> SequenceSkills { get; } = new List<SequenceSkill>();
     
 

@@ -17,6 +17,6 @@ public class FireballSkill : RepeatSkill
         Vector3 spawnPos = Managers.Game.Player.FireSocket;
         Vector3 dir = Managers.Game.Player.ShootDir;
 
-        GenerateProjectile(10001, Owner, spawnPos, dir, Vector3.zero);
+        GenerateProjectile((int)Define.SkillType.FireBall, Owner, spawnPos, dir, Vector3.zero);
     }
 }
